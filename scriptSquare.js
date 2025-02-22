@@ -24,26 +24,6 @@ function distance(x1, y1, x2, y2) {
   return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
-// Function to calculate the bounding box of the drawn shape
-function calculateBoundingBox(points) {
-  let minX = Infinity, minY = Infinity;
-  let maxX = -Infinity, maxY = -Infinity;
-
-  points.forEach((point) => {
-    minX = Math.min(minX, point.x);
-    minY = Math.min(minY, point.y);
-    maxX = Math.max(maxX, point.x);
-    maxY = Math.max(maxY, point.y);
-  });
-
-  return {
-    x: minX,
-    y: minY,
-    width: maxX - minX,
-    height: maxY - minY,
-  };
-}
-
 // Function to calculate the angle between three points
 function calculateAngle(A, B, C) {
   const AB = distance(A.x, A.y, B.x, B.y);
@@ -53,10 +33,7 @@ function calculateAngle(A, B, C) {
 }
 
 // Function to calculate the accuracy of the drawn square
-function calculateAccuracy(points, boundingBox) {
-  const { width, height } = boundingBox;
-  const expectedSize = Math.min(width, height); // Use the smaller side as the expected size
-
+function calculateAccuracy(points) {
   // Find the four corners of the drawn shape
   const corners = [
     points[0], // Start point
@@ -82,11 +59,45 @@ function calculateAccuracy(points, boundingBox) {
   ];
 
   // Check if the shape is close to a square
-  const sideError = sideLengths.reduce((sum, length) => sum + Math.abs(length - expectedSize), 0);
-  const angleError = angles.reduce((sum, angle) => sum + Math.abs(angle - 90), 0);
+  const expectedSize = (sideLengths[0] + sideLengths[1] + sideLengths[2] + sideLengths[3]) / 4; // Average side length
 
+  // Allow 30% error in side lengths
+  const sideError = sideLengths.reduce((sum, length) => sum + Math.abs(length - expectedSize), 0);
+  const maxSideError = expectedSize * 0.3 * 4; // 30% error allowed for all sides
+
+  // Allow 30-degree error in angles
+  const angleError = angles.reduce((sum, angle) => sum + Math.abs(angle - 90), 0);
+  const maxAngleError = 30 * 4; // 30-degree error allowed for all angles
+
+  // Calculate the bounding box of the drawn shape
+  const boundingBox = calculateBoundingBox(points);
+
+  // Check if the majority of points are within a certain threshold of the bounding box
+  const threshold = 10; // Adjust this value as needed
+  let pointsWithinThreshold = 0;
+
+  points.forEach((point) => {
+    if (
+      point.x >= boundingBox.x - threshold &&
+      point.x <= boundingBox.x + boundingBox.width + threshold &&
+      point.y >= boundingBox.y - threshold &&
+      point.y <= boundingBox.y + boundingBox.height + threshold
+    ) {
+      pointsWithinThreshold++;
+    }
+  });
+
+  const pointsWithinThresholdRatio = pointsWithinThreshold / points.length;
+
+  // If the shape is not close to a square, return accuracy less than 10%
+  if (sideError > maxSideError || angleError > maxAngleError || pointsWithinThresholdRatio < 0.9) {
+    return (Math.random() * 10).toFixed(2); // Random accuracy less than 10%
+  }
+
+  // Calculate accuracy based on side and angle errors
   const totalError = sideError + angleError;
-  const accuracy = Math.max(0, 100 - (totalError / (expectedSize * 4 + 360)) * 100);
+  const maxTotalError = maxSideError + maxAngleError;
+  const accuracy = Math.max(0, 100 - (totalError / maxTotalError) * 100);
   return accuracy.toFixed(2);
 }
 
@@ -191,14 +202,10 @@ function stopDrawing() {
     return;
   }
 
-  // Store the perfect square
-  perfectSquare = boundingBox;
+  // Calculate accuracy
+  const accuracy = calculateAccuracy(points);
 
-  // Draw the perfect square
-  drawPerfectSquare(boundingBox);
-
-  // Calculate and display accuracy
-  const accuracy = calculateAccuracy(points, boundingBox);
+  // Display accuracy
   accuracyDisplay.textContent = `${accuracy}%`;
 
   // Play sound effects
@@ -231,13 +238,33 @@ function getCoordinates(e) {
   return { x, y };
 }
 
+// Function to calculate the bounding box of the drawn shape
+function calculateBoundingBox(points) {
+  let minX = Infinity, minY = Infinity;
+  let maxX = -Infinity, maxY = -Infinity;
+
+  points.forEach((point) => {
+    minX = Math.min(minX, point.x);
+    minY = Math.min(minY, point.y);
+    maxX = Math.max(maxX, point.x);
+    maxY = Math.max(maxY, point.y);
+  });
+
+  return {
+    x: minX,
+    y: minY,
+    width: maxX - minX,
+    height: maxY - minY,
+  };
+}
+
 // Function to shuffle recommended games
 function shuffleGames() {
   const games = [
-    { name: 'Game 1', image: 'Images/BABYSHOWERPC.jpg', link: 'ChildBirth.html' },
-    { name: 'Game 2', image: 'Images/Drawaperfectcircle.jpg', link: 'DrawCircle.html' },
-    { name: 'Game 3', image: 'Images/Drawaperfetsquare.jpg', link: 'DrawSquare.html' },
-    { name: 'Game 4', image: 'game4.jpg', link: '#' },
+    { name: 'Child Birth', image: 'game1.jpg', link: 'ChildBirth.html' },
+    { name: 'Game 2', image: 'game2.jpg', link: 'game2.html' },
+    { name: 'Game 3', image: 'game3.jpg', link: 'game3.html' },
+    { name: 'Game 4', image: 'game4.jpg', link: 'game4.html' },
   ];
 
   // Shuffle the games array
@@ -260,3 +287,6 @@ function shuffleGames() {
 
 // Shuffle recommended games on page load
 shuffleGames();
+
+// Reset button event listener
+resetButton.addEventListener('click', resetGame);
