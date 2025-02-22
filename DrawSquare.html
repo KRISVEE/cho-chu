@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Draw a Perfect Circle</title>
+  <link rel="stylesheet" href="stylesSquare.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <a href="index.html" style="text-decoration: none; color: inherit;">
+      <h1 class="logo">CHO CHU</h1>
+    </a>
+    <h1 class="game-title">Draw a Perfect Square</h1>
+  </header>
+
+  <!-- Game Section -->
+  <main>
+    <div class="game-container">
+      <!-- Left Side: Game Canvas -->
+      <div class="game-canvas-container">
+        <canvas id="game-canvas" width="500" height="500"></canvas>
+      </div>
+
+      <!-- Right Side: Controls and Recommended Games -->
+      <div class="game-right-side">
+        <!-- Controls -->
+        <div class="game-controls">
+          <div class="score">
+            <p>Accuracy: <span id="accuracy">0%</span></p>
+            <p>Highest Record: <span id="highest-record">0%</span></p>
+            <label for="blueprint-toggle">
+              <input type="checkbox" id="blueprint-toggle"> Show Blueprint
+            </label>
+            <button id="reset-button">Reset</button>
+          </div>
+        </div>
+
+        <!-- Recommended Games -->
+        <div class="recommended-games">
+          <h2>You May Also Like</h2>
+          <div class="game-list">
+            <!-- Games will be shuffled dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="https://instagram.com" target="_blank" class="social-link">
+        <img src="insta_icon.png" alt="Instagram">
+        <span>Instagram</span>
+      </a>
+      <a href="https://twitter.com" target="_blank" class="social-link">
+        <img src="icon-twitter-x.webp" alt="Twitter">
+        <span>Twitter</span>
+      </a>
+      <a href="https://www.buymeacoffee.com/chochu" target="_blank">
+        <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a mars&emoji=🪐&slug=chochu&button_colour=FF5F5F&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00" alt="Buy Me a Mars" />
+      </a>
+    </div>
+    <p class="privacy-policy">
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="scriptSquare.js"></script>
+</body>
+</html>

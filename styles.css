@@ -1,0 +1,158 @@
+/* General Styles */
+body {
+  font-family: 'Comic Neue', cursive; /* Kid-friendly font */
+  margin: 0;
+  padding: 0;
+  background-color: #fff5f5; /* Very light pink */
+  background-image: radial-gradient(#ffcccc 1px, transparent 1px); /* Tiny dots */
+  background-size: 20px 20px; /* Size of the dots */
+  background-attachment: fixed; /* Fixed background */
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure footer sticks to bottom */
+}
+
+header {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #fff5f5; /* Same as body background */
+  background-image: radial-gradient(#ffcccc 1px, transparent 1px); /* Tiny dots */
+  background-size: 20px 20px; /* Size of the dots */
+}
+
+.logo {
+  font-family: 'Luckiest Guy', cursive; /* Fun, less bold font for logo */
+  font-size: 3.625rem; /* Increased by 45% (from 2.5rem) */
+  font-weight: normal; /* Less bold */
+  color: #333;
+  margin: 0;
+}
+
+.slogan {
+  font-size: 1.2rem;
+  color: #777;
+  margin-top: 10px;
+}
+
+/* Game Grid */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Space between banners */
+  padding: 20px; /* Padding around the grid */
+  justify-content: center; /* Center the grid horizontally */
+  flex: 1; /* Push footer to bottom */
+}
+
+.game-banner {
+  position: relative;
+  overflow: hidden;
+  border: 4px solid #ddd; /* Increased border size */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  aspect-ratio: 3 / 1; /* 3:1 aspect ratio */
+}
+
+.game-banner:hover {
+  transform: scale(1.05);
+}
+
+.game-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the banner */
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff5f5; /* Very light pink */
+  background-image: radial-gradient(#ffcccc 1px, transparent 1px); /* Tiny dots */
+  background-size: 20px 20px; /* Size of the dots */
+  color: #333;
+  margin-top: auto; /* Stick footer to bottom */
+}
+
+.custom-text {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Reduced gap for more space */
+  margin-bottom: 10px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #333;
+  border: 2px solid #333;
+  border-radius: 8px; /* Rectangular shape */
+  width: 120px; /* Increased width for text */
+  height: 50px; /* Fixed height */
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  padding: 0 10px; /* Reduced left-right padding */
+}
+
+.social-link:hover {
+  transform: scale(1.1); /* Pop effect */
+  background-color: rgba(255, 204, 204, 0.3); /* Light pink hover */
+}
+
+.social-link img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px; /* Space between icon and text */
+}
+
+.privacy-policy {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.privacy-policy a {
+  color: #333;
+  text-decoration: none;
+}
+
+.privacy-policy a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .game-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Smaller banners on mobile */
+  }
+
+  .logo {
+    font-size: 2rem;
+  }
+
+  .slogan {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Even smaller banners on mobile */
+  }
+
+  .logo {
+    font-size: 1.8rem;
+  }
+
+  .slogan {
+    font-size: 0.9rem;
+  }
+}

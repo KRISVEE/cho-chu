@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Child Birth Game</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jvectormap/2.0.4/jquery-jvectormap.css">
+  <link rel="stylesheet" href="stylesChild.css">
+ 
+</head>
+<body>
+  <audio id="baby-cry-sound" src="sounds/baby-cry.mp3"></audio>
+  <!-- Header -->
+  <header>
+    <a href="index.html" style="text-decoration: none; color: inherit;">
+      <h1 class="logo">CHO CHU</h1>
+    </a>
+    <h1 class="game-title">Child Birth Game</h1>
+  </header>
+
+  <!-- Game Section -->
+  <main>
+    <!-- World Map -->
+    <div class="world-map">
+      <div id="world-map" style="width: 100%; height: 500px;"></div>
+    </div>
+
+    <button id="reset-button" class="reset-button">Reset Simulation</button>
+
+    <!-- Total Child Count -->
+    <div class="child-count">
+      <p>Total Children Born: <span id="total-child-count">0</span></p>
+    </div>
+
+    <!-- Country List -->
+    <div class="country-list">
+      <h2>Countries with New Births</h2>
+      <ul id="country-list">
+        <!-- Countries will be added dynamically -->
+      </ul>
+    </div>
+
+    <!-- You May Also Like -->
+<div class="recommended-games">
+  <h2>You May Also Like</h2>
+  <div class="game-list">
+      <!-- Games will be shuffled dynamically -->
+  </div>
+</div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="https://instagram.com" target="_blank" class="social-link">
+        <img src="insta_icon.png" alt="Instagram">
+        <span>Instagram</span>
+      </a>
+      <a href="https://twitter.com" target="_blank" class="social-link">
+        <img src="icon-twitter-x.webp" alt="Twitter">
+        <span>Twitter</span>
+      </a>
+      <a href="https://www.buymeacoffee.com/chochu" target="_blank" >
+        <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a mars&emoji=🪐&slug=chochu&button_colour=FF5F5F&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00" alt="Buy Me a Mars" />
+      </a>
+    </div>
+    <p class="privacy-policy">
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </p>
+  </footer>
+
+  <!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- jVectorMap Map File (world-mill.js) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jvectormap/2.0.4/maps/world-mill.js"></script>
+
+<!-- jVectorMap Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jvectormap/2.0.4/jquery-jvectormap.min.js"></script>
+
+<!-- Your Custom Script -->
+<script src="scriptChild.js"></script>
+</body>
+</html>

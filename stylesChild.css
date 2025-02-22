@@ -1,0 +1,222 @@
+/* General Styles */
+body {
+  font-family: 'Comic Neue', cursive; /* Kid-friendly font */
+  margin: 0;
+  padding: 0;
+  background-color: #fff5f5; /* Very light pink */
+  background-image: radial-gradient(#ffcccc 1px, transparent 1px); /* Tiny dots */
+  background-size: 20px 20px; /* Size of the dots */
+  background-attachment: fixed; /* Fixed background */
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure footer sticks to bottom */
+}
+
+/* Header */
+header {
+  padding: 20px;
+  background-color: #fff5f5; /* Same as body background */
+  background-image: radial-gradient(#ffcccc 1px, transparent 1px); /* Tiny dots */
+  background-size: 20px 20px; /* Size of the dots */
+}
+
+.logo {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 2.5rem;
+  color: #333;
+  margin: 0;
+  cursor: pointer; /* Add pointer cursor to indicate it's clickable */
+}
+
+.logo:hover {
+  color: #382828; /* Optional: Add hover effect */
+}
+
+/* World Map */
+.world-map {
+  text-align: center;
+  margin: 20px 0;
+}
+
+#world-map {
+  width: 100%;
+  height: 500px;
+}
+
+/* Blinking Animation */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.blink-marker {
+  font-size: 24px;
+  animation: blink 1s infinite;
+}
+
+/* Child Count */
+.child-count {
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 20px 0;
+}
+
+/* Country List */
+.country-list {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.country-list h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.country-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.country-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.country-list img {
+  width: 30px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+/* Recommended Games */
+.recommended-games {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.recommended-games h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.game-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 10px; /* Space between banners */
+}
+
+.game-banner {
+  background-color: #fff;
+  border: 4px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  position: relative;
+  width: 100%; /* Full width of the grid cell */
+  padding-top: 33.33%; /* 3:1 aspect ratio (1 / 3 * 100) */
+}
+
+.game-banner img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the banner */
+}
+
+.game-banner:hover {
+  transform: scale(1.05);
+}
+
+/* Reset Button */
+.reset-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-family: 'Comic Neue', cursive;
+  color: #fff;
+  background-color: #ff5f5f;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.reset-button:hover {
+  background-color: #ff0000;
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff5f5; /* Very light pink */
+  background-image: radial-gradient(#ffcccc 1px, transparent 1px); /* Tiny dots */
+  background-size: 20px 20px; /* Size of the dots */
+  color: #333;
+  margin-top: auto; /* Stick footer to bottom */
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #333;
+  border: 2px solid #333;
+  border-radius: 8px;
+  width: 120px;
+  height: 50px;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  padding: 0 10px;
+}
+
+.social-link:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 204, 204, 0.3);
+}
+
+.social-link img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.social-link span {
+  font-size: 0.9rem;
+}
+
+.privacy-policy {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.privacy-policy a {
+  color: #333;
+  text-decoration: none;
+}
+
+.privacy-policy a:hover {
+  text-decoration: underline;
+}
