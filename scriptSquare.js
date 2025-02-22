@@ -261,10 +261,10 @@ function calculateBoundingBox(points) {
 // Function to shuffle recommended games
 function shuffleGames() {
   const games = [
-    { name: 'Child Birth', image: 'game1.jpg', link: 'ChildBirth.html' },
-    { name: 'Game 2', image: 'game2.jpg', link: 'game2.html' },
-    { name: 'Game 3', image: 'game3.jpg', link: 'game3.html' },
-    { name: 'Game 4', image: 'game4.jpg', link: 'game4.html' },
+    { name: 'Game 1', image: 'Images/BABYSHOWERPC.jpg', link: 'ChildBirth.html' },
+    { name: 'Game 2', image: 'Images/Drawaperfectcircle.jpg', link: 'DrawCircle.html' },
+    { name: 'Game 3', image: 'Images/Drawaperfetsquare.jpg', link: 'DrawSquare.html' },
+    { name: 'Game 4', image: 'game4.jpg', link: '#' },
   ];
 
   // Shuffle the games array
