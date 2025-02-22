@@ -4,12 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Child Birth Game</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jvectormap/2.0.4/jquery-jvectormap.css">
-  <link rel="stylesheet" href="stylesChild.css">
- 
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="stylesChild.css" />
 </head>
 <body>
+  <!-- Audio for baby cry -->
   <audio id="baby-cry-sound" src="sounds/baby-cry.mp3"></audio>
+
   <!-- Header -->
   <header>
     <a href="index.html" style="text-decoration: none; color: inherit;">
@@ -22,9 +25,10 @@
   <main>
     <!-- World Map -->
     <div class="world-map">
-      <div id="world-map" style="width: 100%; height: 400px;"></div>
+      <div id="world-map"></div>
     </div>
 
+    <!-- Reset Button -->
     <button id="reset-button" class="reset-button">Reset Simulation</button>
 
     <!-- Total Child Count -->
@@ -40,13 +44,14 @@
       </ul>
     </div>
 
-    <!-- You May Also Like -->
-<div class="recommended-games">
-  <h2>You May Also Like</h2>
-  <div class="game-list">
-      <!-- Games will be shuffled dynamically -->
-  </div>
-</div>
+    <!-- Recommended Games -->
+    <div class="recommended-games">
+      <h2>You May Also Like</h2>
+      <div class="game-list">
+        <!-- Games will be shuffled dynamically -->
+      </div>
+    </div>
+  </main>
 
   <!-- Footer -->
   <footer>
@@ -59,33 +64,20 @@
         <img src="icon-twitter-x.webp" alt="Twitter">
         <span>Twitter</span>
       </a>
-      <a href="https://www.buymeacoffee.com/chochu" target="_blank" >
+      <a href="https://www.buymeacoffee.com/chochu" target="_blank">
         <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a mars&emoji=🪐&slug=chochu&button_colour=FF5F5F&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00" alt="Buy Me a Mars" />
       </a>
-      <script data-bms="bms" data-bms_userupi="prithvibhai132-1@oksbi" data-bms_user_name="Prithvi Raj" data-bms_user_amount=""
-      data-bms_usertmsq="Love my work? Support me with a small contribution via UPI!" src="https://buymeasamosa.github.io/bms-js/bms.js"></script>
     </div>
     <p class="privacy-policy">
       <a href="privacy-policy.html">Privacy Policy</a>
     </p>
   </footer>
 
-  <!-- Leaflet CSS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
   <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- jVectorMap Map File (world-mill.js) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jvectormap/2.0.4/maps/world-mill.js"></script>
-
-<!-- jVectorMap Library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jvectormap/2.0.4/jquery-jvectormap.min.js"></script>
-
-<!-- Your Custom Script -->
-<script src="scriptChild.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Custom Script -->
+  <script src="scriptChild.js"></script>
 </body>
 </html>
