@@ -24,6 +24,18 @@ function distance(x1, y1, x2, y2) {
   return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
+// Function to calculate the center and radius of the drawn circle
+function calculateCircle(points) {
+  const center = {
+    x: points.reduce((sum, point) => sum + point.x, 0) / points.length,
+    y: points.reduce((sum, point) => sum + point.y, 0) / points.length,
+  };
+  const radius =
+    points.reduce((sum, point) => sum + distance(point.x, point.y, center.x, center.y), 0) /
+    points.length;
+  return { center, radius };
+}
+
 // Function to calculate the accuracy of the drawn circle
 function calculateAccuracy(drawnPoints, center, radius) {
   let totalError = 0;
@@ -79,18 +91,30 @@ function showNotification(message, type = 'error') {
   }, 3000);
 }
 
-// Event listeners
-canvas.addEventListener('mousedown', (e) => {
+// Event listeners for both mouse and touch events
+canvas.addEventListener('mousedown', startDrawing);
+canvas.addEventListener('touchstart', startDrawing, { passive: false });
+
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('touchmove', draw, { passive: false });
+
+canvas.addEventListener('mouseup', stopDrawing);
+canvas.addEventListener('touchend', stopDrawing);
+
+// Function to handle the start of drawing
+function startDrawing(e) {
+  e.preventDefault(); // Prevent default behavior for touch events
   isDrawing = true;
   points = [];
-});
+  const { x, y } = getCoordinates(e);
+  points.push({ x, y });
+}
 
-canvas.addEventListener('mousemove', (e) => {
+// Function to handle drawing
+function draw(e) {
   if (!isDrawing) return;
-
-  const rect = canvas.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
+  e.preventDefault(); // Prevent default behavior for touch events
+  const { x, y } = getCoordinates(e);
   points.push({ x, y });
 
   // Draw the user's circle
@@ -106,21 +130,16 @@ canvas.addEventListener('mousemove', (e) => {
   if (perfectCircle) {
     drawPerfectCircle(perfectCircle.center, perfectCircle.radius);
   }
-});
+}
 
-canvas.addEventListener('mouseup', () => {
+// Function to handle the end of drawing
+function stopDrawing() {
   isDrawing = false;
 
   // Calculate the center and radius of the drawn circle
-  const center = {
-    x: points.reduce((sum, point) => sum + point.x, 0) / points.length,
-    y: points.reduce((sum, point) => sum + point.y, 0) / points.length,
-  };
-  const radius =
-    points.reduce((sum, point) => sum + distance(point.x, point.y, center.x, center.y), 0) /
-    points.length;
+  const { center, radius } = calculateCircle(points);
 
-  // Validate the circle
+  // Validate the circle size
   if (radius < MIN_RADIUS) {
     showNotification('Circle is too small! Please draw a larger circle.', 'error');
     errorSfx.play(); // Play error sound effect
@@ -148,17 +167,33 @@ canvas.addEventListener('mouseup', () => {
     errorSfx.play(); // Play error sound effect
   }
   previousAccuracy = parseFloat(accuracy); // Update previous accuracy
-});
+}
 
-resetButton.addEventListener('click', resetGame);
+// Function to get coordinates from mouse or touch events
+function getCoordinates(e) {
+  const rect = canvas.getBoundingClientRect();
+  let x, y;
+
+  if (e.touches) {
+    // Touch event
+    x = e.touches[0].clientX - rect.left;
+    y = e.touches[0].clientY - rect.top;
+  } else {
+    // Mouse event
+    x = e.clientX - rect.left;
+    y = e.clientY - rect.top;
+  }
+
+  return { x, y };
+}
 
 // Function to shuffle recommended games
 function shuffleGames() {
   const games = [
-    { name: 'Child Birth', image: 'Images/BABYSHOWERPC.jpg', link: 'ChildBirth.html' },
-    { name: 'Game 2', image: 'game2.jpg', link: 'game2.html' },
-    { name: 'Game 3', image: 'game3.jpg', link: 'game3.html' },
-    { name: 'Game 4', image: 'game4.jpg', link: 'game4.html' },
+    { name: 'Game 1', image: 'Images/BABYSHOWERPC.jpg', link: 'ChildBirth.html' },
+    { name: 'Game 2', image: 'Images/Drawaperfectcircle.jpg', link: 'DrawCircle.html' },
+    { name: 'Game 3', image: 'Images/Drawaperfetsquare.jpg', link: 'DrawSquare.html' },
+    { name: 'Game 4', image: 'game4.jpg', link: '#' },
   ];
 
   // Shuffle the games array

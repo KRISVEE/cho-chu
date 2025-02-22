@@ -183,10 +183,10 @@ $(document).ready(function () {
 
   // Shuffle "You May Also Like" games
   const recommendedGames = [
-    { name: 'Game 1', image: 'game1.jpg', link: 'game1.html' },
-    { name: 'Game 2', image: 'game2.jpg', link: 'game2.html' },
-    { name: 'Game 3', image: 'game3.jpg', link: 'game3.html' },
-    { name: 'Game 4', image: 'game4.jpg', link: 'game4.html' },
+    { name: 'Game 1', image: 'Images/BABYSHOWERPC.jpg', link: 'ChildBirth.html' },
+    { name: 'Game 2', image: 'Images/Drawaperfectcircle.jpg', link: 'DrawCircle.html' },
+    { name: 'Game 3', image: 'Images/Drawaperfetsquare.jpg', link: 'DrawSquare.html' },
+    { name: 'Game 4', image: 'game4.jpg', link: '#' },
   ];
 
   function shuffleGames() {
