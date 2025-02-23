@@ -363,3 +363,42 @@ footer {
   font-family: 'Comic Neue', cursive !important;
   font-size: 16px !important;
 }
+
+/* Header Content */
+.header-content {
+  text-align: center; /* Center the text logo and slogan */
+  padding: 20px 0; /* Add some padding */
+}
+
+/* Watch Ads Button */
+.watch-ads-btn {
+  position: fixed; /* Fixed position */
+  top: 20px; /* Distance from the top */
+  right: 20px; /* Distance from the right */
+  padding: 10px 20px;
+  background-color: #ff5f5f; /* Red background */
+  color: #fff; /* White text */
+  border: none;
+  border-radius: 8px; /* Rounded corners */
+  font-family: 'Comic Neue', cursive;
+  font-size: 14px;
+  text-decoration: none; /* Remove underline */
+  cursor: pointer;
+  z-index: 1000; /* Ensure it's on top of other elements */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.watch-ads-btn:hover {
+  background-color: #ff0000; /* Darker red on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .watch-ads-btn {
+    position: static; /* Remove fixed positioning */
+    display: block; /* Make it a block element */
+    margin: 10px auto; /* Center the button */
+    width: fit-content; /* Adjust width to fit content */
+  }
+}
