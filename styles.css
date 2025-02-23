@@ -38,7 +38,7 @@ header {
 /* Game Grid */
 .game-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  grid-template-columns: repeat(3, 1fr); /* Maximum of 3 banners in a row */
   gap: 20px; /* Space between banners */
   padding: 20px; /* Padding around the grid */
   justify-content: center; /* Center the grid horizontally */
@@ -128,31 +128,16 @@ footer {
   text-decoration: underline;
 }
 
+
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .game-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Smaller banners on mobile */
-  }
-
-  .logo {
-    font-size: 2rem;
-  }
-
-  .slogan {
-    font-size: 1rem;
+    grid-template-columns: repeat(2, 1fr); /* 2 banners in a row for tablets */
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .game-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Even smaller banners on mobile */
-  }
-
-  .logo {
-    font-size: 1.8rem;
-  }
-
-  .slogan {
-    font-size: 0.9rem;
+    grid-template-columns: repeat(1, 1fr); /* 1 banner in a row for mobile */
   }
 }

@@ -19,6 +19,9 @@ header {
   background-color: #fff5f5;
   background-image: radial-gradient(#ffcccc 1px, transparent 1px);
   background-size: 20px 20px;
+  display: flex;
+  justify-content: space-between; /* Space out logo and game title */
+  align-items: center; /* Vertically center items */
 }
 
 .logo {
@@ -31,6 +34,11 @@ header {
 
 .logo:hover {
   color: #382828;
+}
+
+.game-title {
+  font-size: 1.5rem; /* Adjust size as needed */
+  margin: 0; /* Remove default margin */
 }
 
 /* World Map */
@@ -107,8 +115,15 @@ header {
 
 .game-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* Default to 2 columns */
   gap: 10px;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 768px) {
+  .game-list {
+    grid-template-columns: 1fr; /* Switch to 1 column on smaller screens */
+  }
 }
 
 .game-banner {
@@ -170,6 +185,7 @@ footer {
   justify-content: center;
   gap: 15px;
   margin-bottom: 10px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .social-link {
@@ -213,4 +229,17 @@ footer {
 
 .privacy-policy a:hover {
   text-decoration: underline;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 768px) {
+  .social-links {
+    flex-direction: column; /* Stack links in a single column */
+    align-items: center; /* Center items horizontally */
+  }
+
+  .social-link {
+    width: 100%; /* Full width for better touch targets */
+    max-width: 200px; /* Optional: Limit maximum width */
+  }
 }

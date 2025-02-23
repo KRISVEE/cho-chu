@@ -17,7 +17,11 @@ const companies = [
   { name: 'Apple', logo: 'logos/apple.png' },
   { name: 'Google', logo: 'logos/google.png' },
   { name: 'Microsoft', logo: 'logos/microsoft.png' },
-  { name: 'Nike', logo: 'logos/nike.png' },
+  { name: 'Nike', logo: 'logos/nike.jpeg' },
+  { name: 'Facebook', logo: 'logos/facebook.png' },
+  { name: 'Instagram', logo: 'logos/Instagram.png' },
+  { name: 'Tata', logo: 'logos/tata.png' },
+  { name: 'Xbox', logo: 'logos/xbox.jpeg' },
 ];
 
 let currentCompanyIndex = 0;
