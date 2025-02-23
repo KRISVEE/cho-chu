@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Draw the Logo</title>
+  <link rel="stylesheet" href="styleslogo.css"> <!-- Reuse the same CSS file -->
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <a href="index.html" style="text-decoration: none; color: inherit;">
+      <h1 class="logo">CHO CHU</h1>
+    </a>
+    <h1 class="game-title">Draw the Logo</h1>
+  </header>
+
+  <!-- Game Section -->
+  <main>
+    <div class="game-container">
+      <!-- Left Side: Game Canvas -->
+      <div class="game-canvas-container">
+        <canvas id="game-canvas" width="500" height="500"></canvas>
+        <div id="logo-reveal" class="hidden">
+          <div class="logo-reveal-content">
+            <img id="logo-image" src="" alt="Company Logo">
+            <p>Here's the actual logo!</p>
+            <button id="exit-button">Exit</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side: Controls and Recommended Games -->
+      <div class="game-right-side">
+        <!-- Controls -->
+        <div class="game-controls">
+          <div class="score">
+            <p>Company: <span id="company-name">Loading...</span></p>
+            <button id="reveal-button">Reveal Logo</button>
+            <button id="reset-button">Reset</button>
+            <button id="next-button">Next Logo</button>
+          </div>
+        </div>
+
+        <!-- Recommended Games -->
+        <div class="recommended-games">
+          <h2>You May Also Like</h2>
+          <div class="game-list">
+            <!-- Games will be shuffled dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color Palette at the Bottom -->
+    <div class="color-palette">
+      <h3>Choose Ink Color:</h3>
+      <div class="colors">
+        <div class="color" data-color="#000000" style="background-color: #000000;"></div>
+        <div class="color" data-color="#FF0000" style="background-color: #FF0000;"></div>
+        <div class="color" data-color="#00FF00" style="background-color: #00FF00;"></div>
+        <div class="color" data-color="#0000FF" style="background-color: #0000FF;"></div>
+        <div class="color" data-color="#FFFF00" style="background-color: #FFFF00;"></div>
+        <div class="color" data-color="#FF00FF" style="background-color: #FF00FF;"></div>
+        <div class="color" data-color="#00FFFF" style="background-color: #00FFFF;"></div>
+        <div class="color" data-color="#800000" style="background-color: #800000;"></div>
+        <div class="color" data-color="#008000" style="background-color: #008000;"></div>
+        <div class="color" data-color="#000080" style="background-color: #000080;"></div>
+        <div class="color" data-color="#808000" style="background-color: #808000;"></div>
+        <div class="color" data-color="#800080" style="background-color: #800080;"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="https://www.instagram.com/prithvi.dll/" target="_blank" class="social-link">
+        <img src="insta_icon.png" alt="Instagram">
+        <span>Instagram</span>
+      </a>
+      <a href="https://twitter.com" target="_blank" class="social-link">
+        <img src="icon-twitter-x.webp" alt="Twitter">
+        <span>Twitter</span>
+      </a>
+      <a href="https://www.buymeacoffee.com/chochu" target="_blank">
+        <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a mars&emoji=🪐&slug=chochu&button_colour=FF5F5F&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00" alt="Buy Me a Mars" />
+      </a>
+      <script data-bms="bms" data-bms_userupi="prithvibhai132-1@oksbi" data-bms_user_name="Prithvi Raj" data-bms_user_amount=""
+      data-bms_usertmsq="Love my work? Support me with a small contribution via UPI!" src="https://buymeasamosa.github.io/bms-js/bms.js"></script>
+    </div>
+    <p class="privacy-policy">
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="logoGame.js"></script>
+</body>
+</html>

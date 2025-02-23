@@ -193,7 +193,7 @@ function shuffleGames() {
     { name: 'Game 1', image: 'Images/BABYSHOWERPC.jpg', link: 'ChildBirth.html' },
     { name: 'Game 2', image: 'Images/Drawaperfectcircle.jpg', link: 'DrawCircle.html' },
     { name: 'Game 3', image: 'Images/Drawaperfetsquare.jpg', link: 'DrawSquare.html' },
-    { name: 'Game 4', image: 'game4.jpg', link: '#' },
+    { name: 'Game 4', image: 'Images/logoGame.jpg', link: 'logoGame.html' },
   ];
 
   // Shuffle the games array
