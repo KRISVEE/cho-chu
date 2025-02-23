@@ -9,9 +9,8 @@ const logoImage = document.getElementById('logo-image');
 const gameList = document.querySelector('.game-list');
 
 let isDrawing = false;
-let currentPath = []; // Stores points for the current drawing segment
-let allPaths = []; // Stores all drawing segments
-let selectedColor = '#000000'; // Default color is black
+let currentPath = [];
+let allPaths = [];
 
 // List of companies and their logos
 const companies = [
@@ -25,12 +24,11 @@ let currentCompanyIndex = 0;
 
 // Function to start the game
 function startGame() {
-  // Select the current company
   const currentCompany = companies[currentCompanyIndex];
   companyNameDisplay.textContent = currentCompany.name;
   logoImage.src = currentCompany.logo;
-  logoReveal.classList.add('hidden'); // Hide the logo initially
-  resetGame(); // Clear the canvas
+  logoReveal.classList.add('hidden');
+  resetGame();
 }
 
 // Function to reset the game
@@ -38,7 +36,6 @@ function resetGame() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   currentPath = [];
   allPaths = [];
-  logoReveal.classList.add('hidden'); // Hide the logo on reset
 }
 
 // Function to reveal the logo
@@ -53,8 +50,8 @@ function hideLogoReveal() {
 
 // Function to move to the next logo
 function nextLogo() {
-  currentCompanyIndex = (currentCompanyIndex + 1) % companies.length; // Loop through companies
-  startGame(); // Start the next game
+  currentCompanyIndex = (currentCompanyIndex + 1) % companies.length;
+  startGame();
 }
 
 // Event listeners for both mouse and touch events
@@ -69,30 +66,29 @@ canvas.addEventListener('touchend', stopDrawing);
 
 // Function to handle the start of drawing
 function startDrawing(e) {
-  e.preventDefault(); // Prevent default behavior for touch events
+  e.preventDefault();
   isDrawing = true;
   const { x, y } = getCoordinates(e);
-  currentPath = [{ x, y, color: selectedColor }]; // Start a new segment with the selected color
-  allPaths.push(currentPath); // Add the segment to all paths
+  currentPath = [{ x, y }];
+  allPaths.push(currentPath);
 }
 
 // Function to handle drawing
 function draw(e) {
   if (!isDrawing) return;
-  e.preventDefault(); // Prevent default behavior for touch events
+  e.preventDefault();
   const { x, y } = getCoordinates(e);
-  currentPath.push({ x, y, color: selectedColor }); // Add the current point to the path
+  currentPath.push({ x, y });
 
-  // Redraw all paths
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  allPaths.forEach((path) => {
-    ctx.beginPath();
+  ctx.beginPath();
+  allPaths.forEach(path => {
     ctx.moveTo(path[0].x, path[0].y);
-    path.forEach((point) => ctx.lineTo(point.x, point.y));
-    ctx.strokeStyle = point.color || '#000000'; // Use the selected color
-    ctx.lineWidth = 2;
-    ctx.stroke();
+    path.forEach(point => ctx.lineTo(point.x, point.y));
   });
+  ctx.strokeStyle = '#000000';
+  ctx.lineWidth = 2;
+  ctx.stroke();
 }
 
 // Function to handle the end of drawing
@@ -118,35 +114,20 @@ function getCoordinates(e) {
   return { x, y };
 }
 
-// Event listener for color selection
-document.querySelectorAll('.color').forEach((color) => {
-  color.addEventListener('click', () => {
-    // Remove active class from all colors
-    document.querySelectorAll('.color').forEach((c) => c.classList.remove('active'));
-    // Add active class to the selected color
-    color.classList.add('active');
-    // Update the selected color
-    selectedColor = color.getAttribute('data-color');
-  });
-});
-
 // Function to shuffle recommended games
 function shuffleGames() {
   const games = [
-    { name: 'Game 1', image: 'Images/BABYSHOWERPC.jpg', link: 'ChildBirth.html' },
-    { name: 'Game 2', image: 'Images/Drawaperfectcircle.jpg', link: 'DrawCircle.html' },
-    { name: 'Game 3', image: 'Images/Drawaperfetsquare.jpg', link: 'DrawSquare.html' },
-    { name: 'Game 4', image: 'Images/logoGame.jpg', link: 'logoGame.html' },
+    { name: 'Child Birth', image: 'Images/BABYSHOWERPC.jpg', link: 'ChildBirth.html' },
+    { name: 'Draw a Circle', image: 'Images/Drawaperfectcircle.jpg', link: 'DrawCircle.html' },
+    { name: 'Draw a Square', image: 'Images/Drawaperfetsquare.jpg', link: 'DrawSquare.html' },
+    { name: 'Draw the Logo', image: 'Images/logoGame.jpg', link: 'logoGame.html' },
   ];
-
-  // Shuffle the games array
-  const shuffledGames = games.sort(() => Math.random() - 0.5).slice(0, 4);
 
   // Clear existing games
   gameList.innerHTML = '';
 
   // Add shuffled games to the list
-  shuffledGames.forEach((game) => {
+  games.forEach((game) => {
     const gameBanner = document.createElement('div');
     gameBanner.className = 'game-banner';
     gameBanner.onclick = () => window.location.href = game.link;
@@ -157,12 +138,12 @@ function shuffleGames() {
   });
 }
 
-// Initialize the game
-startGame();
-shuffleGames();
-
-// Event listeners for buttons
+// Button functionalities
 revealButton.addEventListener('click', revealLogo);
 resetButton.addEventListener('click', resetGame);
 nextButton.addEventListener('click', nextLogo);
 document.getElementById('exit-button').addEventListener('click', hideLogoReveal);
+
+// Initialize the game
+startGame();
+shuffleGames();

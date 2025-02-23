@@ -218,49 +218,6 @@ body {
     text-decoration: underline;
   }
   
-  /* Color Palette */
-  .color-palette {
-    margin-top: 20px;
-    text-align: center;
-    padding: 10px;
-    background-color: #fff;
-    border: 4px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .color-palette h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .colors {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  
-  .color {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    border: 2px solid #ddd;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-  
-  .color:hover {
-    transform: scale(1.1);
-    border-color: #333;
-  }
-  
-  .color.active {
-    border-color: #333;
-    transform: scale(1.1);
-  }
-  
   /* Logo Reveal Section */
   #logo-reveal {
     position: absolute;
@@ -316,4 +273,22 @@ body {
   #exit-button:hover {
     background-color: #ff0000;
     transform: scale(1.05);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .game-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .game-canvas-container {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  
+    .game-right-side {
+      width: 100%;
+      max-width: 500px;
+    }
   }
