@@ -262,9 +262,7 @@ shuffleGames();
 
 
 
- src="https://assets.mailerlite.com/js/universal.js"
 
-  ml('account', '1348609');
 
 
 
@@ -287,3 +285,141 @@ function ml_webform_success_22982383() {
     successContent.style.display = 'none';
   }, 3000); // 3 seconds delay
 }
+
+
+
+
+
+// for share btn
+
+
+
+ 
+ // Function to handle sharing the score
+ function shareScore() {
+  const shareButton = document.getElementById('share-button');
+  const accuracy = accuracyDisplay.textContent;
+  const highestRecord = highestRecordDisplay.textContent;
+
+  // Create a shareable message
+  const shareText = `I just scored ${accuracy} accuracy in Draw a Perfect Circle! Can you beat my highest record of ${highestRecord}? 🎉 Beat me here: https://golden-semolina-a12c0d.netlify.app/drawcircle`;
+
+  console.log('Shareable Text:', shareText); // Debugging
+
+  // Disable the share button to prevent multiple clicks
+  shareButton.disabled = true;
+  shareButton.textContent = 'Sharing...';
+
+  try {
+    // Create a custom share modal
+    const shareModal = document.createElement('div');
+    shareModal.style.position = 'fixed';
+    shareModal.style.top = '50%';
+    shareModal.style.left = '50%';
+    shareModal.style.transform = 'translate(-50%, -50%)';
+    shareModal.style.backgroundColor = '#fff';
+    shareModal.style.padding = '20px';
+    shareModal.style.borderRadius = '10px';
+    shareModal.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
+    shareModal.style.zIndex = '1000';
+    shareModal.style.width = '300px';
+    shareModal.style.textAlign = 'center';
+    shareModal.style.fontFamily = 'Arial, sans-serif';
+
+    // Modal content
+    shareModal.innerHTML = `
+      <h3 style="margin: 0 0 15px; font-size: 18px; color: #333;">Share Your Score</h3>
+      <p style="margin: 0 0 20px; font-size: 14px; color: #555;">${shareText}</p>
+      <button style="margin: 5px; padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="copyToClipboard('${shareText}')">Copy Link</button>
+      <button style="margin: 5px; padding: 10px 15px; background-color: #1877F2; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="shareOnFacebook('${shareText}')">Share on Facebook</button>
+      <button style="margin: 5px; padding: 10px 15px; background-color: #25D366; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="shareOnWhatsApp('${shareText}')">Share on WhatsApp</button>
+      <button style="margin: 5px; padding: 10px 15px; background-color: #E4405F; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="shareOnInstagram('${shareText}')">Share on Instagram</button>
+      <button style="margin: 5px; padding: 10px 15px; background-color: #1DA1F2; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="shareOnTwitter('${shareText}')">Share on Twitter</button>
+      <button style="margin: 5px; padding: 10px 15px; background-color: #EA4335; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="shareViaEmail('${shareText}')">Share via Email</button>
+      <button style="margin: 5px; padding: 10px 15px; background-color: #888; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="closeModal()">Close</button>
+    `;
+
+    // Append the modal to the body
+    document.body.appendChild(shareModal);
+
+    // Add a semi-transparent overlay
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    overlay.style.zIndex = '999';
+    document.body.appendChild(overlay);
+
+    // Function to close the modal and remove the overlay
+    window.closeModal = () => {
+      shareModal.remove();
+      overlay.remove();
+    };
+  } catch (error) {
+    console.error('Error sharing score:', error);
+    alert('Failed to share. Please try again.');
+  } finally {
+    // Re-enable the share button
+    shareButton.disabled = false;
+    shareButton.textContent = 'Share Your Score';
+  }
+}
+
+// Function to copy text to clipboard
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    alert('Share text copied to clipboard!');
+  }).catch((error) => {
+    console.error('Failed to copy text:', error);
+    alert('Failed to copy text. Please manually share the link.');
+  });
+}
+
+// Function to share on Facebook
+function shareOnFacebook(text) {
+  const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://golden-semolina-a12c0d.netlify.app/drawsquare')}&quote=${encodeURIComponent(text)}`;
+  window.open(facebookUrl, '_blank');
+}
+
+// Function to share on WhatsApp
+function shareOnWhatsApp(text) {
+  const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+  window.open(whatsappUrl, '_blank');
+}
+
+// Function to share on Instagram
+function shareOnInstagram(text) {
+  // Instagram does not support direct sharing of text or links via URL.
+  // Users can copy the link and paste it into Instagram manually.
+  copyToClipboard(text);
+  alert('Copy the link and paste it into Instagram!');
+}
+
+// Function to share on Twitter
+function shareOnTwitter(text) {
+  const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+  window.open(twitterUrl, '_blank');
+}
+
+// Function to share via email
+function shareViaEmail(text) {
+  const emailUrl = `mailto:?subject=Draw a Perfect Square&body=${encodeURIComponent(text)}`;
+  window.location.href = emailUrl;
+}
+
+// Attach event listener to the share button
+document.addEventListener('DOMContentLoaded', () => {
+  const shareButton = document.getElementById('share-button');
+  if (shareButton) {
+    console.log('Share button found');
+    shareButton.addEventListener('click', () => {
+      console.log('Share button clicked');
+      shareScore();
+    });
+  } else {
+    console.error('Share button not found');
+  }
+});
