@@ -125,6 +125,7 @@ function shuffleGames() {
     { name: 'Draw a Circle', image: 'Images/Drawaperfectcircle.jpg', link: 'DrawCircle.html' },
     { name: 'Draw a Square', image: 'Images/Drawaperfetsquare.jpg', link: 'DrawSquare.html' },
     { name: 'Draw the Logo', image: 'Images/logoGame.jpg', link: 'logoGame.html' },
+    { name: 'Game 5', image: 'Images/Password.jpg', link: 'Passwordgame.html' },
   ];
 
   // Clear existing games

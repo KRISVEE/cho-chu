@@ -194,6 +194,7 @@ function shuffleGames() {
     { name: 'Game 2', image: 'Images/Drawaperfectcircle.jpg', link: 'DrawCircle.html' },
     { name: 'Game 3', image: 'Images/Drawaperfetsquare.jpg', link: 'DrawSquare.html' },
     { name: 'Game 4', image: 'Images/logoGame.jpg', link: 'logoGame.html' },
+    { name: 'Game 5', image: 'Images/Password.jpg', link: 'Passwordgame.html' },
   ];
 
   // Shuffle the games array
